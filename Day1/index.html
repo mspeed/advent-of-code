@@ -7,16 +7,21 @@
   
   <body>
 
-    <h1>Exercise 1</h1>
 
-    <p>Sum of numbers.</p>
 
     <p>Paste a link to the page where the numbers are</p>
     <p><strong>or</strong> upload a file with the numbers in it.</p>
 
     <p id="demo"> Hello, world!</p>
+    <button type="button" onclick="myFunction()"> Click me!</button>
 
-    <button type="button" onclick='document.getElementById("demo").innerHTML = "Hello, advent of code!"'> Click me!</button>
+    <h1>Exercise 1</h1>    
+    <p>Sum of numbers. Paste them in the box below.</p>
+    
+    <input type="text" id="TextBox">
+    <button type="button" onclick="ProcessNumbers()"> Process </button>    
 
+    <script src="myScript.js"></script>
+    
   </body>
 </html>

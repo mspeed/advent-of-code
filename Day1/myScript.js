@@ -11,33 +11,71 @@ function ProcessNumbers() {
 
     console.log("str_length: " + str_length);
 
-    while(str_length > 0)
-    {    
-	var pos = x.search(" ");
-	console.log("Position of space: " + pos);
-	if(pos > 0)
-	{
-	    var number = x.substring(0, pos);
-	    x = x.substring(pos+1, str_length);
-	    running_sum += parseInt(number, 10);
-	    str_length = x.length;
-	    console.log("str_length: " + str_length);
-	}
-	else
-	{
-	    var LastSample = parseInt(x, 10);
-	    if((LastSample < 0) || (LastSample > 0))
+    var FreqArr = Array();
+    FreqArr.push(0);
+    var RepeatedFreqDetected = false;
+    var SingleRunSum = 0;
+
+    //    while(RepeatedFreqDetected == false)
+    for(i = 0; i < 160; i++)
+    {
+	x = document.getElementById("TextBox").value;
+	str_length = x.length;
+	while(str_length > 0)
+	{    
+	    var pos = x.search(" ");
+	    console.log("Position of space: " + pos);
+	    if(pos > 0)
 	    {
-		running_sum += LastSample;
+		var number = x.substring(0, pos);
+		x = x.substring(pos+1, str_length);
+		running_sum += parseInt(number, 10);
+		if(i == 0)
+		{
+		    SingleRunSum += parseInt(number, 10);
+		}
+		
+		str_length = x.length;
+//		console.log("str_length: " + str_length);
+		
+		var FreqArrIndex = FreqArr.indexOf(running_sum);
+		
+		if(FreqArrIndex == -1)
+		{
+		    FreqArr.push(running_sum);
+//		    console.log("Adding " + running_sum + " to array");
+		}
+		else  // In the array. This is the first repeated frequency :)
+		{
+		    if(RepeatedFreqDetected == false)
+		    {
+			window.alert("First repeated frequency: " + running_sum);
+			RepeatedFreqDetected = true;
+		    }
+		}
+		
 	    }
-	    str_length = 0;
-	    console.log("str_length: " + str_length);
+	    else
+	    {
+		var LastSample = parseInt(x, 10);
+		if((LastSample < 0) || (LastSample > 0))
+		{
+		    running_sum += LastSample;
+		    if(i == 0)
+		    {
+			SingleRunSum += LastSample;
+		    }
+		}
+		str_length = 0;
+		console.log("str_length: " + str_length);
+	    }		
 	}
     }
-
     
     
-    var alert_pos = "Total of pasted values is: " + running_sum;
+    
+//    var alert_pos = "Total of pasted values is: " + running_sum;
+    var alert_pos = "Total of pasted values is: " + SingleRunSum;
     window.alert(alert_pos);
     
 }
