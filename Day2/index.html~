@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title> Advent of Code </title>
+  </head>
+  
+  <body>
+
+
+    <p>Paste a link to the page where the numbers are</p>
+    <p><strong>or</strong> upload a file with the numbers in it.</p>
+
+    <p id="demo"> Hello, world!</p>
+    <button type="button" onclick="myFunction()"> Click me!</button>
+
+    <h1>Exercise 1</h1>    
+    <p>Sum of numbers. Paste them in the box below.</p>
+    
+    <input type="text" id="TextBox">
+    <button type="button" onclick="ProcessNumbers()"> Process </button>    
+
+
+    <h1>Exercise 2</h1>
+    <p> Count the number of times any single letter appears twice, and three times in a code. </p>
+
+    <p> Process: For each word. For each letter, look for exactly two appearances & exactly three.</p>
+    <p> If/when this occurs, increment a global counter. </p>
+
+    <p> Then, finally, multiply the two together to get a checksum </p>
+
+    <input type="text" id="BoxIDText">
+    <button type="button" onclick="CountLetters()"> Process </button>
+
+
+    
+    <script src="myScript.js"></script>
+    
+  </body>
+</html>

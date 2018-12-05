@@ -1,0 +1,100 @@
+function myFunction() {
+    document.getElementById("demo").innerHTML = "Hello, advent of code!"
+    window.alert(0.1 + 0.5);
+}
+
+
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+function CountLetters() {
+
+    // Series of codes.
+    var txt = document.getElementById("BoxIDTest").value;
+    txt.split(" ");
+
+    console.log("There are: " + txt.length + " codes in the input");
+
+    // For each code:
+
+    //     For each letter in the alphabet.
+
+    //     Find the number of times it occurs.
+
+}
+
+function ProcessNumbers() {
+
+    var x = document.getElementById("TextBox").value;
+    var str_length = x.length;
+    var running_sum = 0;
+
+    console.log("str_length: " + str_length);
+
+    var FreqArr = Array();
+    FreqArr.push(0);
+    var RepeatedFreqDetected = false;
+    var SingleRunSum = 0;
+
+    //    while(RepeatedFreqDetected == false)
+    for(i = 0; i < 160; i++)
+    {
+	x = document.getElementById("TextBox").value;
+	str_length = x.length;
+	while(str_length > 0)
+	{    
+	    var pos = x.search(" ");
+	    console.log("Position of space: " + pos);
+	    if(pos > 0)
+	    {
+		var number = x.substring(0, pos);
+		x = x.substring(pos+1, str_length);
+		running_sum += parseInt(number, 10);
+		if(i == 0)
+		{
+		    SingleRunSum += parseInt(number, 10);
+		}
+		
+		str_length = x.length;
+//		console.log("str_length: " + str_length);
+		
+		var FreqArrIndex = FreqArr.indexOf(running_sum);
+		
+		if(FreqArrIndex == -1)
+		{
+		    FreqArr.push(running_sum);
+//		    console.log("Adding " + running_sum + " to array");
+		}
+		else  // In the array. This is the first repeated frequency :)
+		{
+		    if(RepeatedFreqDetected == false)
+		    {
+			window.alert("First repeated frequency: " + running_sum);
+			RepeatedFreqDetected = true;
+		    }
+		}
+		
+	    }
+	    else
+	    {
+		var LastSample = parseInt(x, 10);
+		if((LastSample < 0) || (LastSample > 0))
+		{
+		    running_sum += LastSample;
+		    if(i == 0)
+		    {
+			SingleRunSum += LastSample;
+		    }
+		}
+		str_length = 0;
+		console.log("str_length: " + str_length);
+	    }		
+	}
+    }
+    
+    
+    
+//    var alert_pos = "Total of pasted values is: " + running_sum;
+    var alert_pos = "Total of pasted values is: " + SingleRunSum;
+    window.alert(alert_pos);
+    
+}
